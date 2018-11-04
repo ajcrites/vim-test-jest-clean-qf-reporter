@@ -1,6 +1,6 @@
 class JestVimReporter {
   onTestResult(test, { testResults }) {
-    console.log();
+    // console.log();
     testResults.forEach(test => {
       if (test.status !== 'failed') return;
       // note: I couldn't find out how to make a test generate more than one
@@ -25,10 +25,9 @@ class JestVimReporter {
         } else {
           const [line1, line2] = lines;
           const msg = line1.trim();
-          // const location = line2.replace(/^[ ]*\(/, '').replace(/\)[ ]*/, '');
-          const location = line2;
-          console.log(msg);
-          console.log(location);
+          const location = line2.replace(/^[ ]*\(/, '').replace(/\)[ ]*/, '');
+          //const location = line2;
+          console.log(`${location}: ${msg}`);
         }
       });
     });
